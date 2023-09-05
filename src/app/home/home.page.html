@@ -1,0 +1,55 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Welcome {{this.fullname}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content background-color="black" class="ion-padding">
+    <ion-button expand="block" color="dark" routerLink="/home">Dashboard</ion-button>
+    <ion-button expand="block" fill="outline" color="success" routerLink="/addproduct">Add Product</ion-button>
+    <ion-button expand="block" fill="outline" color="warning" routerLink="/viewproduct">View Product</ion-button>
+    <ion-button expand="block" fill="outline" routerLink="/userprofile">Update Profile</ion-button>
+    <ion-button expand="block" fill="outline" color="danger" (click)="logout('bottom')">Logout</ion-button>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>{{this.email}}</ion-title>
+      <ion-buttons slot="end" class="cart-sec">
+        <ion-chip>{{login_user_cart.length}}</ion-chip>
+        <ion-icon size="large" routerLink="/cart" slot="end" high="15px" width="15px" name="cart-outline"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar></ion-searchbar>
+  <ion-content class="ion-padding">
+    <!-- my components -->
+    <!-- <app-my-card-component>
+    </app-my-card-component> -->
+    <ion-card *ngFor="let items of viewproduct">
+      <ion-card-header>
+        <ion-card-title>{{items.product_title}}</ion-card-title>
+        <ion-card-subtitle>Price : {{items.product_price}} rs</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>description: {{items.product_description}}</ion-card-content>
+      <ion-button fill="clear" position="start" shape="round" (click)="addtocart(items)"
+        *ngIf="!check(items.product_id)">Add to cart</ion-button>
+      <ion-button *ngIf="!check(items.product_id)" fill="clear" position="start" shape="round"
+        (click)="openModal(items.product_id)"><ion-icon
+          name="chatbox-outline"></ion-icon><span>Comment</span></ion-button>
+      <ion-button fill="clear" color="success" position="start" shape="round" *ngIf="check(items.product_id)"
+        routerLink="/cart">Buy Now</ion-button>
+      <ion-button no-padding *ngIf="check(items.product_id)" fill="clear" position="start" shape="round"
+        (click)="openModal(items.product_id)"><ion-icon name="chatbox-outline"></ion-icon>Comment</ion-button>
+    </ion-card>
+    <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+      <ion-fab-button routerLink="/chatlist">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>
+</div>

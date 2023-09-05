@@ -1,0 +1,16 @@
+<ion-card *ngFor="let items of viewproduct">
+  <ion-card-header>
+    <ion-card-title>{{items.product_title}}</ion-card-title>
+    <ion-card-subtitle>Price : {{items.product_price}} rs</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>description: {{items.product_description}}</ion-card-content>
+  <ion-button fill="clear" position="start" shape="round" (click)="addtocart(items)"
+    *ngIf="!check(items.product_id)">Add to cart</ion-button>
+  <ion-button *ngIf="!check(items.product_id)" fill="clear" position="start" shape="round"
+    (click)="openModal(items.product_id)"><ion-icon
+      name="chatbox-outline"></ion-icon><span>Comment</span></ion-button>
+  <ion-button fill="clear" color="success" position="start" shape="round" *ngIf="check(items.product_id)"
+    routerLink="/cart">Buy Now</ion-button>
+  <ion-button no-padding *ngIf="check(items.product_id)" fill="clear" position="start" shape="round"
+    (click)="openModal(items.product_id)"><ion-icon name="chatbox-outline"></ion-icon>Comment</ion-button>
+</ion-card>

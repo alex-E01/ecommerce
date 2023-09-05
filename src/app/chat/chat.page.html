@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" text="" defaultHref="chatlist"></ion-back-button>
+  
+    <ion-avatar slot="start">
+      <img [src]="getchatuser.profile_dp" alt="">
+    </ion-avatar>
+  </ion-buttons>
+     <ion-title>{{getchatuser.fullname}}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+
+<ion-item *ngFor="let item of userallchat;;" lines="none">
+  <ion-label  *ngIf="this.loggedinuser.uid != item.Uid" slot="start">
+    <ion-text>
+      {{item.Text}}
+    </ion-text>
+  </ion-label>
+  <ion-label  *ngIf="this.loggedinuser.uid == item.Uid" slot="end">
+    <ion-text>
+      {{item.Text}}
+    </ion-text>
+  </ion-label>
+</ion-item>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-textarea [(ngModel)]="chat_text" autoGrow rows="1"placeholder="Message" class="ion-text-start" >
+    </ion-textarea>
+    <ion-buttons slot="end">
+     <ion-fab-button (click)="letchat()" size="small" color="primary"><ion-icon size="medium" name="send-sharp"></ion-icon></ion-fab-button> 
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

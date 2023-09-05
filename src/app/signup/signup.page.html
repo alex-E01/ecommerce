@@ -1,0 +1,62 @@
+<!-- signup.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="outer">
+      <ng-container *ngIf="imageUrl == '' ">
+        <img class="avatar"  src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ng-container>
+     <ng-container *ngIf="imageUrl != '' ">
+      <img class="avatar" [src]="imageUrl" alt="" />
+     </ng-container>
+        <div class="inner" >
+           <ion-icon name="camera" (click)="takePicture()" class="camera-icon"></ion-icon>
+        </div>
+     </div>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Full Name</ion-label>
+          <ion-input type="text" [(ngModel)]="fullname" required="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email" required="true"></ion-input>
+
+          
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password" required="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" color="danger" (click)="signup()">Sign Up</ion-button>
+        <br>
+        <ion-text>Already have a account ?  </ion-text> <a [routerLink]="['/']" class="small-text">Login</a> 
+        
+        
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

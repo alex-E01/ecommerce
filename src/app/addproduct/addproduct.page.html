@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button icon="arrow-back-outline" text="" defaultHref="/"></ion-back-button>
+      </ion-buttons>
+    
+    <ion-title>Add Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-item lines="full">
+      <ion-label position="floating">Product title</ion-label>
+      <ion-input type="text" [(ngModel)]="product_title"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Product Description</ion-label>
+      <ion-input type="text" [(ngModel)]="product_description" required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Price</ion-label>
+      <ion-input type="number" [(ngModel)]="product_price" required></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="success" (click)="addproduct()" expand="block">Add</ion-button>
+      </ion-col>
+    </ion-row>
+</ion-content>

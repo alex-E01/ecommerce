@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Comments</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="success" (click)="cancel()">Close</ion-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true"></ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let item of usercomment;">
+    <ion-card-header>
+      <ion-card-title><ion-chip>
+        <ion-avatar>
+          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>{{item.login_user_email}}</ion-label>
+      </ion-chip></ion-card-title>
+      <!-- <ion-card-subtitle>Product Id : {{item.get_product_id}}</ion-card-subtitle> -->
+    </ion-card-header>
+    <ion-card-content>
+      {{item.comment_input}}
+      <!-- <ion-text>{{item.date}}  </ion-text> -->
+    </ion-card-content>
+    <ion-text *ngIf="item.login_user_email == loggedinuser.email" (click)="edit_comment(item)" position="start" fill="clear" expand="full" color="success" position="start" shape="round" ><ion-icon name="create-outline"></ion-icon> Edit</ion-text>  
+    <ion-text *ngIf="item.login_user_email == loggedinuser.email" (click)="remove_comment(item.login_user_email,item.count)" position="start" fill="clear" expand="full" color="danger" position="start" shape="round" ><ion-icon name="trash-outline" ></ion-icon> Remove</ion-text>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-input class="input_class" type="text"  [(ngModel)]="comment_input" ></ion-input>
+    <ion-button (click)="comment()" slot="end"><ion-icon  name="send-sharp"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-footer>

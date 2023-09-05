@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" text="" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>viewproduct</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+ 
+  <ion-card *ngFor="let item of myproduct; let i = index">
+    <ion-card-header>
+      <ion-card-title>{{item.product_title}}</ion-card-title>
+      <ion-card-subtitle >Price : {{item.product_price}} rs</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>description: {{item.product_description}}</ion-card-content>
+    <ion-button fill="clear"  position="start" shape="round">Edit</ion-button>
+    <ion-button fill="clear" position="end" shape="round" color="danger" (click)="deleteitem(item.product_id,i)">Delete</ion-button>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" text="" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile - {{this.fullname}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="outer">
+      <ng-container *ngIf="imageUrl != '' " alt="" >
+        <img class="avatar"  [src]="imageUrl" />
+      </ng-container>
+     <ng-container *ngIf="profile_image != '' ">
+      <img class="avatar" [src]="profile_image" alt="" />
+     </ng-container>
+        <div class="inner" >
+           <ion-icon name="camera" (click)="takePicture()" class="camera-icon"></ion-icon>
+        </div>
+     </div>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Full Name</ion-label>
+          <ion-input type="text" [(ngModel)]="fullname" required="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input readonly="true" type="email" [(ngModel)]="email" required="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password" required="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="full" color="warning" (click)="Updateprofile()">Update Profile</ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

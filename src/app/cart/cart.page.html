@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" text="" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+
+  <ion-card *ngFor="let items of login_user_cart; let i = index;">
+    <ion-card-header>
+      <ion-card-title>{{items.product_title}}</ion-card-title>
+      <ion-card-subtitle >Price : {{items.product_price}} rs</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>description: {{items.product_description}}</ion-card-content>
+    <ion-button size="small" fill="clear" (click)="decrement(i)"> <ion-icon name="remove-outline"></ion-icon> </ion-button>
+    <ion-text> {{items.quantity}} </ion-text>
+    <ion-button size="small" fill="clear"(click)="increment(i)"> <ion-icon name="add"></ion-icon> </ion-button>
+    <ion-button position="start" fill="clear" expand="full" color="danger" position="start" shape="round" (click)=" deletecartitem(i)" ><ion-icon name="trash-outline" ></ion-icon> Remove</ion-button>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button slot="end">Place Order</ion-button>
+  </ion-toolbar>
+</ion-footer>

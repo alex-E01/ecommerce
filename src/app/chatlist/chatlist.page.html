@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back-outline" text="" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Select Contact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list  *ngFor="let item of chatuser;">
+    <ion-item  (click)="livechat(item)" >
+      <ion-avatar slot="start">
+        <img [src]="item.profile_dp" alt="">
+      </ion-avatar>
+      <ion-label>
+        {{item.fullname}}
+        <p>
+          <ion-text>message</ion-text>
+        </p>
+      </ion-label>
+      <ion-text slot="end" color="medium">10:12 am</ion-text>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
